@@ -1,0 +1,6 @@
+framework module Pods_pseudogramTests {
+  umbrella header "Pods-pseudogramTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
