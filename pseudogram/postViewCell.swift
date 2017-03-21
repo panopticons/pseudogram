@@ -23,7 +23,7 @@ class postViewCell: UITableViewCell {
       let author = post["author"] as! PFUser?
       let picture = post["media"] as! PFObject
       let imageData = picture["image"] as? PFFile
-      self.postAuth.text = author?.username
+      self.postAuth.text = "by \((author?.username)!)"
       self.postCaption.text = post["caption"] as! String?
       imageData!.getDataInBackground { (imageInfo: Data?, error: Error?) in
         if(error == nil) {

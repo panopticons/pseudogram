@@ -13,6 +13,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
   @IBOutlet weak var postTable: UITableView!
   var data: [PFObject]!
+  var loading = false
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -37,6 +38,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     postTable.reloadData()
     
+    Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: "onTimer", userInfo: nil, repeats: true)
     // Do any additional setup after loading the view.
   }
 
@@ -47,7 +49,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
   @IBAction func logOut(_ sender: Any) {
     PFUser.logOut()
-    
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -68,8 +69,31 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     return cell
   }
   
-  
-    /*
+  func onTimer() {
+    var query = PFQuery(className:"Post")
+    query.order(byDescending: "createdAt")
+    query.includeKey("media")
+    query.includeKey("author")
+    query.includeKey("caption")
+    
+    query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
+      if error == nil {
+        // The find succeeded.
+        //print("Successfully retrieved \(objects!.count) scores.")
+        // Do something with the found objects
+        if let objects = objects {
+          self.data = objects
+        }
+      } else {
+        // Log details of the failure
+        print("Error: \(error!)")
+      }
+    }
+    postTable.reloadData()
+  }
+
+
+      /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

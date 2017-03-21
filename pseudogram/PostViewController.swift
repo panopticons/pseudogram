@@ -76,17 +76,16 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
       let picture = PFObject(className: "Picture")
       picture["image"] = imageFile
       
-      
       let post = PFObject(className: "Post")
       post["media"] = picture
       post["author"] = PFUser.current()
       post["caption"] = postCap.text!
       
+      post.saveInBackground()
       
       self.dismiss(animated: true, completion: nil)
   }
 }
-
   func getPFFileFromImage(image: UIImage?) -> PFFile? {
     // check if image is not nil
     if let image = image {

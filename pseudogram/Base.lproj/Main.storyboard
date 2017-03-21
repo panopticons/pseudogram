@@ -214,9 +214,10 @@
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="mT2-MD-gQT">
                             <connections>
                                 <action selector="logOut:" destination="Cef-8m-eMb" id="GvW-8I-3bU"/>
+                                <segue destination="bRu-Ax-XTK" kind="show" id="ygg-Ne-Nj8"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Post" id="1S7-Kz-Upg">
+                        <barButtonItem key="rightBarButtonItem" title="New Post" id="1S7-Kz-Upg">
                             <connections>
                                 <segue destination="her-G1-LED" kind="presentation" id="fay-Dk-6h8"/>
                             </connections>
