@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class MainViewController: UIViewController {
 
@@ -21,6 +22,13 @@ class MainViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+  @IBAction func logOut(_ sender: Any) {
+    //PFUser.logOutInBackgroundWithBlock { (error: NSError?) in
+      // PFUser.currentUser() will now be nil
+    //}
+    
+    PFUser.logOut()
+  }
 
     /*
     // MARK: - Navigation
