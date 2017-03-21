@@ -35,7 +35,6 @@ class ViewController: UIViewController {
     newUser.signUpInBackground() {
       (succeeded: Bool?, error: Error?) -> Void in
       if !newUser.isNew {
-        //self.present(self.alertController2, animated: true)
         print("false")
       }
       else {

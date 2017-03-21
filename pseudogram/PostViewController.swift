@@ -70,17 +70,18 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     else
     {
-      /*let scaledImage = self.resize(image: self.postImage.image!, newSize: CGSize(width: 750, height: 750))
+      let scaledImage = self.resize(image: self.postImage.image!, newSize: CGSize(width: 250, height: 250))
       let imageData = UIImageJPEGRepresentation(scaledImage, 0)
       let imageFile = PFFile(name:"image.jpg", data:imageData!)
       let picture = PFObject(className: "Picture")
-      picture["image"] = imageFile*/
+      picture["image"] = imageFile
       
       
       let post = PFObject(className: "Post")
-      //post["media"] = picture
+      post["media"] = picture
       post["author"] = PFUser.current()
       post["caption"] = postCap.text!
+      
       
       self.dismiss(animated: true, completion: nil)
   }
@@ -97,11 +98,12 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     return nil
   }
   
-  @nonobjc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-    // Get the image captured by the UIImagePickerController
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    
     let pic = info[UIImagePickerControllerOriginalImage] as! UIImage
     
     postImage.image = pic
+    
     self.dismiss(animated: true, completion: nil)
   }
   

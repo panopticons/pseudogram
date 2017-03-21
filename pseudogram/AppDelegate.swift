@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       print("logged in")
       
       let storyB = UIStoryboard(name: "Main", bundle: nil)
-      let viewC = storyB.instantiateViewController(withIdentifier: "posts")
+      let viewC = storyB.instantiateViewController(withIdentifier: "test")
       
       self.window?.rootViewController = viewC
     }

@@ -19,6 +19,24 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     postTable.delegate = self
     postTable.dataSource = self
     
+    let query = PFQuery(className: "Post")
+    query.order(byDescending: "createdAt")
+    query.includeKey("author")
+    query.includeKey("caption")
+    query.includeKey("media")
+    query.limit = 20
+    
+    // fetch data asynchronously
+    query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) -> Void in
+      
+      if let posts = posts {
+        self.data = posts
+      } else {
+        print("NIL")
+      }
+    }
+    postTable.reloadData()
+    
     // Do any additional setup after loading the view.
   }
 
@@ -28,14 +46,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
   @IBAction func logOut(_ sender: Any) {
-    PFUser.logOutInBackgroundWithBlock { (error: NSError?) in
-      // PFUser.currentUser() will now be nil
-      PFUser.current() = nil
-      
-    }
+    PFUser.logOut()
+    
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
     if data != nil {
       return data.count
     } else {
