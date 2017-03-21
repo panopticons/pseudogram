@@ -142,7 +142,7 @@
         <!--Main View Controller-->
         <scene sceneID="LAk-Lb-uyr">
             <objects>
-                <viewController id="Cef-8m-eMb" customClass="MainViewController" customModule="pseudogram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="posts" id="Cef-8m-eMb" customClass="MainViewController" customModule="pseudogram" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TKP-NG-W2B"/>
                         <viewControllerLayoutGuide type="bottom" id="Kb2-Ww-kiA"/>
@@ -151,17 +151,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8qQ-4Z-Qai">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="300" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8qQ-4Z-Qai">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="DPP-ss-j4a">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="postViewCell" rowHeight="300" id="DPP-ss-j4a" customClass="postViewCell" customModule="pseudogram" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DPP-ss-j4a" id="3Kd-HD-LMF">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="299"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hic-cG-sg1">
+                                                    <rect key="frame" x="67" y="21" width="240" height="200"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Caption" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fl3-OF-Xvl">
+                                                    <rect key="frame" x="67" y="229" width="240" height="23"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="auth" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f25-Ag-Hpb">
+                                                    <rect key="frame" x="67" y="260" width="240" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="f25-Ag-Hpb" firstAttribute="top" secondItem="Fl3-OF-Xvl" secondAttribute="bottom" constant="8" id="2Ti-qX-CYF"/>
+                                                <constraint firstItem="Fl3-OF-Xvl" firstAttribute="leading" secondItem="3Kd-HD-LMF" secondAttribute="leadingMargin" constant="59" id="3E1-AG-FKz"/>
+                                                <constraint firstItem="hic-cG-sg1" firstAttribute="leading" secondItem="3Kd-HD-LMF" secondAttribute="leadingMargin" constant="59" id="3hX-od-lGh"/>
+                                                <constraint firstItem="Fl3-OF-Xvl" firstAttribute="top" secondItem="hic-cG-sg1" secondAttribute="bottom" constant="8" id="QQP-9K-5ZM"/>
+                                                <constraint firstItem="Fl3-OF-Xvl" firstAttribute="top" secondItem="hic-cG-sg1" secondAttribute="bottom" constant="8" id="SAJ-o6-ZFO"/>
+                                                <constraint firstItem="f25-Ag-Hpb" firstAttribute="leading" secondItem="3Kd-HD-LMF" secondAttribute="leadingMargin" constant="59" id="aJu-R8-nLi"/>
+                                                <constraint firstItem="hic-cG-sg1" firstAttribute="top" secondItem="3Kd-HD-LMF" secondAttribute="topMargin" constant="13" id="fDy-Rk-xXX"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="hic-cG-sg1" secondAttribute="trailing" constant="60" id="jm3-CZ-t7J"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Fl3-OF-Xvl" secondAttribute="trailing" constant="60" id="t48-WN-Thd"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="f25-Ag-Hpb" secondAttribute="bottom" constant="10" id="t4V-Nb-xfO"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="f25-Ag-Hpb" secondAttribute="trailing" constant="60" id="w3A-dx-OBT"/>
+                                                <constraint firstItem="f25-Ag-Hpb" firstAttribute="top" secondItem="Fl3-OF-Xvl" secondAttribute="bottom" constant="8" id="zce-nI-sIY"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="postAuth" destination="f25-Ag-Hpb" id="ZaK-rA-4Us"/>
+                                            <outlet property="postCaption" destination="Fl3-OF-Xvl" id="Gr6-X2-Kxj"/>
+                                            <outlet property="postPic" destination="hic-cG-sg1" id="oSS-sU-ELz"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -186,6 +222,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="postTable" destination="8qQ-4Z-Qai" id="TOu-hY-JKZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J9v-xm-pWa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

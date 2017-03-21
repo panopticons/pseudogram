@@ -12,6 +12,7 @@
 		BE288B0DF5B2F72782548C19 /* Pods_pseudogramUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BB1CBFB68060D41D4E22AB6 /* Pods_pseudogramUITests.framework */; };
 		C120FC421E7FDAC800EDBF54 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120FC411E7FDAC800EDBF54 /* MainViewController.swift */; };
 		C120FC441E80571400EDBF54 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120FC431E80571400EDBF54 /* PostViewController.swift */; };
+		C120FC481E80F15200EDBF54 /* postViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120FC471E80F15200EDBF54 /* postViewCell.swift */; };
 		C1447DBB1E7B32A300BD631F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1447DBA1E7B32A300BD631F /* AppDelegate.swift */; };
 		C1447DBD1E7B32A300BD631F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1447DBC1E7B32A300BD631F /* ViewController.swift */; };
 		C1447DC01E7B32A300BD631F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1447DBE1E7B32A300BD631F /* Main.storyboard */; };
@@ -47,6 +48,7 @@
 		A768F6FB01AAECA4E9691622 /* Pods-pseudogram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pseudogram.release.xcconfig"; path = "Pods/Target Support Files/Pods-pseudogram/Pods-pseudogram.release.xcconfig"; sourceTree = "<group>"; };
 		C120FC411E7FDAC800EDBF54 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C120FC431E80571400EDBF54 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		C120FC471E80F15200EDBF54 /* postViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = postViewCell.swift; sourceTree = "<group>"; };
 		C1447DB71E7B32A300BD631F /* pseudogram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pseudogram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1447DBA1E7B32A300BD631F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1447DBC1E7B32A300BD631F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				C1447DBA1E7B32A300BD631F /* AppDelegate.swift */,
 				C1447DBC1E7B32A300BD631F /* ViewController.swift */,
 				C1447DBE1E7B32A300BD631F /* Main.storyboard */,
+				C120FC471E80F15200EDBF54 /* postViewCell.swift */,
 				C120FC431E80571400EDBF54 /* PostViewController.swift */,
 				C120FC411E7FDAC800EDBF54 /* MainViewController.swift */,
 				C1447DC11E7B32A300BD631F /* Assets.xcassets */,
@@ -456,6 +459,7 @@
 				C120FC421E7FDAC800EDBF54 /* MainViewController.swift in Sources */,
 				C1447DBD1E7B32A300BD631F /* ViewController.swift in Sources */,
 				C1447DBB1E7B32A300BD631F /* AppDelegate.swift in Sources */,
+				C120FC481E80F15200EDBF54 /* postViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

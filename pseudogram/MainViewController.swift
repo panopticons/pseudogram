@@ -9,13 +9,18 @@
 import UIKit
 import Parse
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+  @IBOutlet weak var postTable: UITableView!
+  var data: [PFObject]!
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    postTable.delegate = self
+    postTable.dataSource = self
+    
+    // Do any additional setup after loading the view.
+  }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -23,13 +28,31 @@ class MainViewController: UIViewController {
     }
     
   @IBAction func logOut(_ sender: Any) {
-    //PFUser.logOutInBackgroundWithBlock { (error: NSError?) in
+    PFUser.logOutInBackgroundWithBlock { (error: NSError?) in
       // PFUser.currentUser() will now be nil
-    //}
-    
-    PFUser.logOut()
+      PFUser.current() = nil
+      
+    }
   }
-
+  
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    if data != nil {
+      return data.count
+    } else {
+      return 0
+    }
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    let cell = tableView.dequeueReusableCell(withIdentifier: "postViewCell", for: indexPath as IndexPath) as! postViewCell
+    
+    cell.post = data[indexPath.row]
+    
+    return cell
+  }
+  
+  
     /*
     // MARK: - Navigation
 

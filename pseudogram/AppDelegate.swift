@@ -26,6 +26,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
       )
     
+    if PFUser.current() != nil {
+      print("logged in")
+      
+      let storyB = UIStoryboard(name: "Main", bundle: nil)
+      let viewC = storyB.instantiateViewController(withIdentifier: "posts")
+      
+      self.window?.rootViewController = viewC
+    }
+    
     return true
   }
 

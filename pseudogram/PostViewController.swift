@@ -7,14 +7,14 @@
 //
 
 import UIKit
+import Parse
 
 class PostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+  
   @IBOutlet weak var postImage: UIImageView!
   @IBOutlet weak var photoLib: UIButton!
   @IBOutlet weak var cameraTake: UIButton!
   @IBOutlet weak var postCap: UITextView!
-  
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +25,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
       view.addGestureRecognizer(tap)
   }
 
-    override func didReceiveMemoryWarning() {
+  override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -34,6 +34,18 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     self.dismiss(animated: true, completion: nil)
   }
 
+  func resize(image: UIImage, newSize: CGSize) -> UIImage {
+    let resizeImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+    resizeImageView.contentMode = UIViewContentMode.scaleAspectFill
+    resizeImageView.image = image
+    
+    UIGraphicsBeginImageContext(resizeImageView.frame.size)
+    resizeImageView.layer.render(in: UIGraphicsGetCurrentContext()!)
+    let newImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    return newImage!
+  }
+  
   @IBAction func takePic(_ sender: Any) {
     let vc = UIImagePickerController()
     vc.delegate = self
@@ -51,25 +63,53 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
   }
   
   @IBAction func makePost(_ sender: Any) {
+    
+    if (postCap.text! == "")
+    {
+      print("ERROR")
+    }
+    else
+    {
+      /*let scaledImage = self.resize(image: self.postImage.image!, newSize: CGSize(width: 750, height: 750))
+      let imageData = UIImageJPEGRepresentation(scaledImage, 0)
+      let imageFile = PFFile(name:"image.jpg", data:imageData!)
+      let picture = PFObject(className: "Picture")
+      picture["image"] = imageFile*/
+      
+      
+      let post = PFObject(className: "Post")
+      //post["media"] = picture
+      post["author"] = PFUser.current()
+      post["caption"] = postCap.text!
+      
+      self.dismiss(animated: true, completion: nil)
+  }
+}
+
+  func getPFFileFromImage(image: UIImage?) -> PFFile? {
+    // check if image is not nil
+    if let image = image {
+      // get image data and check if that is not nil
+      if let imageData = UIImagePNGRepresentation(image) {
+        return PFFile(name: "image.png", data: imageData)
+      }
+    }
+    return nil
   }
   
-  func imagePickerController(_ picker: UIImagePickerController,
-                             didFinishPickingMediaWithInfo info: [String : Any]) {
+  @nonobjc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
     // Get the image captured by the UIImagePickerController
-    let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-    let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
+    let pic = info[UIImagePickerControllerOriginalImage] as! UIImage
     
-    // Do something with the images (based on your use case)
-    postImage.image = originalImage
-    
-    // Dismiss UIImagePickerController to go back to your original view controller
-    dismiss(animated: true, completion: nil)
+    postImage.image = pic
+    self.dismiss(animated: true, completion: nil)
   }
+  
   
   func dismissKeyboard() {
     view.endEditing(true)
   }
-  
+
   /*
     // MARK: - Navigation
 
@@ -79,5 +119,4 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         // Pass the selected object to the new view controller.
     }
     */
-
 }
